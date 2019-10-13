@@ -1,0 +1,15 @@
+{
+  "name": "path-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dagrejs/graphlib": "^2.1.4",
+    "lodash": "^4.17.15"
+  }
+}
