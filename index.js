@@ -2,13 +2,28 @@
 
 const graphlib = require('@dagrejs/graphlib');
 const _ = require('lodash');
+const fs = require('fs');
 
-const building = require('./building');
-const { allDeepPaths, getPathWeight } = require('./utils');
+const {
+    allDeepPaths,
+    getPathWeight,
+    getFloors,
+    getBeautifulPath
+} = require('./utils');
 
-const graph = graphlib.json.read(building);
+const floors = getFloors('./floors');
 
-for (const path of allDeepPaths(graph, 'f', 'z')) {
-    console.log(_.map(path, (node) => graph.node(node)).join(' -> '));
-    console.log(getPathWeight(graph, path));
-};
+_.forEach(floors, (floor, floorNum) => {
+    console.log(`\nWE ARE ON ${floorNum} FLOOR`);
+
+    const graph = graphlib.json.read(floor);
+    
+    const paths = allDeepPaths(graph, 'street', 'point');
+    // console.log(paths.map(path => path.join(', ')));
+    const maxPathWeight = _.max(paths.map((path) => getPathWeight(graph, path)));
+    console.log(maxPathWeight);
+    console.log(
+        _.filter(paths, (path) => getPathWeight(graph, path) >= maxPathWeight)
+            .map((path) => getBeautifulPath(graph, path))
+    );  
+});

@@ -1,6 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
+const fs = require('fs');
+const path = require('path');
 
 exports.allDeepPaths = function allDeepPaths(graph, path, endNode) {
     let result = [];
@@ -20,8 +22,24 @@ exports.allDeepPaths = function allDeepPaths(graph, path, endNode) {
 
 exports.getPathWeight = (graph, path) => {
     let pathWeight = 1;
-    for (let i = 0; i < path.length - 1; i++) {
-        pathWeight *= graph.edge(path[i], path[i + 1]);
+    for (const node of path) {
+        pathWeight *= graph.node(node);
     }
     return pathWeight;
+};
+
+exports.getFloors = (pathToFloors) => {
+    return fs.readdirSync(path.resolve(pathToFloors))
+        .reduce((res, floor) => {
+            res[path.basename(floor, '.js')] = require(path.resolve(pathToFloors, floor));
+            return res;
+        }, {});
+}
+
+exports.getBeautifulPath = (graph, path) => {
+    const pathEdges = [];
+    for (let i = 0; i < path.length - 1; i++) {
+        pathEdges.push(graph.edge(path[i], path[i + 1]));
+    }
+    return pathEdges.join(' -> ');
 };
