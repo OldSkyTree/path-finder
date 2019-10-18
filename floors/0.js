@@ -38,15 +38,15 @@ module.exports = {
         { v: 'point', value: 1 }
     ],
     edges: [
-        { v: 'street', w: 'W0.1', value: 'Улица' },
-        { v: 'street', w: 'W0.2', value: 'Улица' },
-        { v: 'street', w: 'W0.3', value: 'Улица' },
-        { v: 'street', w: 'W0.4', value: 'Улица' },
-        { v: 'street', w: 'W0.5', value: 'Улица' },
-        { v: 'street', w: 'W0.6', value: 'Улица' },
-        { v: 'street', w: 'W0.7', value: 'Улица' },
-        { v: 'street', w: 'W0.8', value: 'Улица' },
-        { v: 'street', w: 'W0.9', value: 'Улица' },
+        { v: 'street', w: 'W0.1', value: 'Цоколь' },
+        { v: 'street', w: 'W0.2', value: 'Цоколь' },
+        { v: 'street', w: 'W0.3', value: 'Цоколь' },
+        { v: 'street', w: 'W0.4', value: 'Цоколь' },
+        { v: 'street', w: 'W0.5', value: 'Цоколь' },
+        { v: 'street', w: 'W0.6', value: 'Цоколь' },
+        { v: 'street', w: 'W0.7', value: 'Цоколь' },
+        { v: 'street', w: 'W0.8', value: 'Цоколь' },
+        { v: 'street', w: 'W0.9', value: 'Цоколь' },
 
         { v: 'W0.1', w: 'D0.1', value: 'Холодная кладовая' },
         { v: 'W0.2', w: 'D0.1', value: 'Холодная кладовая' },
@@ -73,6 +73,6 @@ module.exports = {
         { v: 'W0.8', w: 'D0.10', value: 'Тренажерная' },
         { v: 'W0.9', w: 'D0.10', value: 'Тренажерная' },
 
-        { v: 'D0.9', w: 'point', value: 'Цель' }
+        { v: 'D0.9', w: 'point', value: 'Хозяйственное помещение' }
     ]
 }

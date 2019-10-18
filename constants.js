@@ -1,7 +1,7 @@
 'use strict';
 
 exports.penetrationProbabilities = {
-    WINDOW: 0.3,
+    WINDOW: 0.15,
     BARS_WINDOW: 0.1,
     NARROW_WINDOW: 0.005,
     SMALL_NARROW_WINDOW: 0.001,

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@dagrejs/graphlib": "^2.1.4",
+    "asciichart": "^1.5.9",
     "lodash": "^4.17.15"
   }
 }

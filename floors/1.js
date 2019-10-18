@@ -46,28 +46,27 @@ module.exports = {
         { v: 'D1.12', value: MAIN_DOOR },
         { v: 'D1.13', value: INTERIOR_DOOR },
         { v: 'D1.14', value: GATES },
-        { v: 'stairs', value: 1 },
-        { v: 'point', value: 1 }
+        { v: 'stairs', value: 1 }
     ],
     edges: [
-        { v: 'street', w: 'W1.1', value: 'Улица' },
-        { v: 'street', w: 'W1.2', value: 'Улица' },
-        { v: 'street', w: 'W1.3', value: 'Улица' },
-        { v: 'street', w: 'W1.4', value: 'Улица' },
-        { v: 'street', w: 'W1.5', value: 'Улица' },
-        { v: 'street', w: 'W1.6', value: 'Улица' },
-        { v: 'street', w: 'W1.7', value: 'Улица' },
-        { v: 'street', w: 'W1.8', value: 'Улица' },
-        { v: 'street', w: 'W1.9', value: 'Улица' },
-        { v: 'street', w: 'W1.10', value: 'Улица' },
-        { v: 'street', w: 'W1.11', value: 'Улица' },
-        { v: 'street', w: 'W1.12', value: 'Улица' },
-        { v: 'street', w: 'W1.13', value: 'Улица' },
-        { v: 'street', w: 'W1.14', value: 'Улица' },
-        { v: 'street', w: 'W1.15', value: 'Улица' },
-        { v: 'street', w: 'W1.16', value: 'Улица' },
-        { v: 'street', w: 'W1.17', value: 'Улица' },
-        { v: 'street', w: 'W1.18', value: 'Улица' },
+        { v: 'street', w: 'W1.1', value: '1-й этаж' },
+        { v: 'street', w: 'W1.2', value: '1-й этаж' },
+        { v: 'street', w: 'W1.3', value: '1-й этаж' },
+        { v: 'street', w: 'W1.4', value: '1-й этаж' },
+        { v: 'street', w: 'W1.5', value: '1-й этаж' },
+        { v: 'street', w: 'W1.6', value: '1-й этаж' },
+        { v: 'street', w: 'W1.7', value: '1-й этаж' },
+        { v: 'street', w: 'W1.8', value: '1-й этаж' },
+        { v: 'street', w: 'W1.9', value: '1-й этаж' },
+        { v: 'street', w: 'W1.10', value: '1-й этаж' },
+        { v: 'street', w: 'W1.11', value: '1-й этаж' },
+        { v: 'street', w: 'W1.12', value: '1-й этаж' },
+        { v: 'street', w: 'W1.13', value: '1-й этаж' },
+        { v: 'street', w: 'W1.14', value: '1-й этаж' },
+        { v: 'street', w: 'W1.15', value: '1-й этаж' },
+        { v: 'street', w: 'W1.16', value: '1-й этаж' },
+        { v: 'street', w: 'W1.17', value: '1-й этаж' },
+        { v: 'street', w: 'W1.18', value: '1-й этаж' },
 
         { v: 'W1.1', w: 'D1.3', value: 'Веранда' },
         { v: 'W1.2', w: 'D1.3', value: 'Веранда' },
@@ -122,14 +121,12 @@ module.exports = {
         
         { v: 'D1.4', w: 'D1.10', value: 'Гостинная' },
         
-        { v: 'W1.18', w: 'stairs', value: 'Прихожая' },
+        { v: 'W1.18', w: 'stairs', value: 'Лестница' },
         
         { v: 'D1.8', w: 'stairs', value: 'Прихожая' },
         { v: 'D1.10', w: 'stairs', value: 'Прихожая' },
         { v: 'D1.12', w: 'stairs', value: 'Прихожая' },
         { v: 'D1.13', w: 'stairs', value: 'Прихожая' },
-        
-        { v: 'stairs', w: 'point', value: 'Лестница' },
         
         { v: 'D1.14', w: 'D1.13', value: 'Гараж' },
     ]

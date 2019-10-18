@@ -28,10 +28,15 @@ exports.getPathWeight = (graph, path) => {
     return pathWeight;
 };
 
-exports.getFloors = (pathToFloors) => {
+exports.getHouse = (pathToFloors) => {
     return fs.readdirSync(path.resolve(pathToFloors))
-        .reduce((res, floor) => {
-            res[path.basename(floor, '.js')] = require(path.resolve(pathToFloors, floor));
+        .reduce((res, floorPath) => {
+            const floor = require(path.resolve(pathToFloors, floorPath));
+            res.options = _.defaultsDeep({}, res.options, floor.options);
+            !res.nodes && (res.nodes = []);
+            !res.edges && (res.edges = []);
+            res.nodes = _.uniqBy(_.concat(res.nodes, floor.nodes), 'v');
+            res.edges = _.concat(res.edges, floor.edges);
             return res;
         }, {});
 }
@@ -43,3 +48,21 @@ exports.getBeautifulPath = (graph, path) => {
     }
     return pathEdges.join(' -> ');
 };
+
+exports.getPath = (graph, path) => {
+    const fullPath = [];
+    for (let i = 0; i < path.length - 1; i++) {
+        fullPath.push(path[i]);
+        fullPath.push(graph.edge(path[i], path[i + 1]));
+    }
+    fullPath.push(_.last(path));
+    return fullPath.join(' -> ');
+};
+
+exports.saveToFile = (filePath, data) => {
+    try {
+        fs.appendFileSync(path.resolve(filePath), data);
+    } catch (err) {
+        console.error(err);
+    }
+}; 

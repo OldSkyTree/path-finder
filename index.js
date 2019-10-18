@@ -2,28 +2,47 @@
 
 const graphlib = require('@dagrejs/graphlib');
 const _ = require('lodash');
-const fs = require('fs');
+const asciichart = require('asciichart');
 
 const {
     allDeepPaths,
     getPathWeight,
-    getFloors,
-    getBeautifulPath
+    getHouse,
+    saveToFile,
+    getPath
 } = require('./utils');
 
-const floors = getFloors('./floors');
+const house = getHouse('./floors');
 
-_.forEach(floors, (floor, floorNum) => {
-    console.log(`\nWE ARE ON ${floorNum} FLOOR`);
+const graph = graphlib.json.read(house);
 
-    const graph = graphlib.json.read(floor);
-    
-    const paths = allDeepPaths(graph, 'street', 'point');
-    // console.log(paths.map(path => path.join(', ')));
-    const maxPathWeight = _.max(paths.map((path) => getPathWeight(graph, path)));
-    console.log(maxPathWeight);
-    console.log(
-        _.filter(paths, (path) => getPathWeight(graph, path) >= maxPathWeight)
-            .map((path) => getBeautifulPath(graph, path))
-    );  
-});
+const paths = _.map(allDeepPaths(graph, 'street', 'point'), (path) => ({
+    path,
+    weight: getPathWeight(graph, path)
+}));
+
+const maxPathWeight = _.maxBy(paths, 'weight').weight;
+console.log(maxPathWeight);
+console.log(
+    _.filter(paths, ({ path, weight }) => weight >= maxPathWeight)
+        .map(({ path }) => getPath(graph, path))
+);
+
+const plot = _(paths)
+    .sortBy()
+    .groupBy((path) => path.weight.toFixed(3))
+    .map((weights) => weights.length)
+    .value();
+
+console.log(asciichart.plot(
+    _.fill(Array(100)).map(() => Math.random()),
+    { height: 10 }
+));
+
+saveToFile('./out.txt',
+    _(paths)
+        .map('weight')
+        .map(weight => weight.toFixed(10))
+        .sort()
+        .join('\n')
+);
